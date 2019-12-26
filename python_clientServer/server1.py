@@ -54,7 +54,7 @@ class recFaceRlt(threading.Thread):
                         info = self.recvalle(conn)
                         try:
                             info = str(info, encoding='utf-8')
-                            recData = eval(info)
+                            recData = eval(info) #接收的info为字典格式时才需要用eval解析
                             print('rec')
                             for key, value in recData.items():
                                 if key == 'ids':
