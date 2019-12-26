@@ -43,8 +43,15 @@ namespace Client
                     //byte[] fssize = new byte[fs.Length];
                     //System.IO.BinaryReader strread = new System.IO.BinaryReader(fs);
                     //strread.Read(fssize, 0, fssize.Length - 1);
+                    
+                    //byte[] datasize = new byte[4];
+                    //datasize = BitConverter.GetBytes(fs.Length);    //把长度作为16进制数放在datasize中
+                    //sendsocket.Send(datasize);      //发送字节流长度给服务器
+                    //sendsocket.Send(fssize, fssize.Length, SocketFlags.None);  //发送图片字节
+                    
                     //sendsocket.Send(fssize);
                     //fs.Close();
+                    
                     
                 }
                 catch
