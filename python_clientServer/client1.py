@@ -48,7 +48,7 @@ def SendVideo():
         }
         # print(info.__sizeof__())
 
-        aa = str.encode(repr(info))
+        aa = str.encode(repr(info)) # 此处info为字典，才需要用repr序列化
         print(len(aa))
         # sock.sendall(aa.rjust(35000))
         sock.sendall(aa)
