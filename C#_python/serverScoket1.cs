@@ -19,7 +19,12 @@ namespace ConsoleApplication2
             ////接受客户端连接
             Socket hostSocket = receiveSocket.Accept();
 
-            byte[] buffer = new byte[1000000];
+            byte[] data = new byte[4];
+            int rect = hostSocket.Receive(data, 0, 4, 0); //用来接收图片字节流长度
+            int size = BitConverter.ToInt32(data, 0);  //16进制转成int型
+
+
+            byte[] buffer = new byte[size];
             hostSocket.Receive(buffer, buffer.Length, SocketFlags.None);
             Console.WriteLine("Receive success");
 
