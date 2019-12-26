@@ -19,18 +19,21 @@ namespace ConsoleApplication2
             ////接受客户端连接
             Socket hostSocket = receiveSocket.Accept();
 
-            byte[] data = new byte[4];
-            int rect = hostSocket.Receive(data, 0, 4, 0); //用来接收图片字节流长度
-            int size = BitConverter.ToInt32(data, 0);  //16进制转成int型
+            for (int i = 0; i < 10; i++)
+            {
+                byte[] data = new byte[4];
+                int rect = hostSocket.Receive(data, 0, 4, 0); //用来接收图片字节流长度
+                int size = BitConverter.ToInt32(data, 0);  //16进制转成int型
 
 
-            byte[] buffer = new byte[size];
-            hostSocket.Receive(buffer, buffer.Length, SocketFlags.None);
-            Console.WriteLine("Receive success");
+                byte[] buffer = new byte[size];
+                hostSocket.Receive(buffer, buffer.Length, SocketFlags.None);
+                Console.WriteLine("Receive success");
 
-            FileStream fs1 = File.Create("1.jpg");
-            fs1.Write(buffer, 0, buffer.Length);
-            fs1.Close();
+                FileStream fs1 = File.Create(i.ToString()+".jpg");
+                fs1.Write(buffer, 0, buffer.Length);
+                fs1.Close();
+            }
 
 
             //关闭接收数据的Socket
