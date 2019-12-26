@@ -27,6 +27,8 @@ def SendVideo():
         result, imgencode = cv2.imencode('.jpg', frame, encode_param)
         data = numpy.array(imgencode)
         stringData = data.tostring()
+        strlen  = struct.pack("i",len(stringData))
+        sock.send(strlen)
         sock.send(stringData)
         
         ret, frame = capture.read()
