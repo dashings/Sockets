@@ -37,6 +37,15 @@ namespace Client
                     string sendMessage = "client send Message Hellp" + DateTime.Now;
                     clientSocket.Send(Encoding.ASCII.GetBytes(sendMessage));
                     Console.WriteLine("向服务器发送消息：{0}" + sendMessage);
+                    
+                    //发送图片
+                    //System.IO.FileStream fs = new System.IO.FileStream(@"F:/Temp/Client/flash01.jpg", System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.Read);
+                    //byte[] fssize = new byte[fs.Length];
+                    //System.IO.BinaryReader strread = new System.IO.BinaryReader(fs);
+                    //strread.Read(fssize, 0, fssize.Length - 1);
+                    //sendsocket.Send(fssize);
+                    //fs.Close();
+                    
                 }
                 catch
                 {
